@@ -4,26 +4,20 @@ Today was my first hands-on SQL practice after setting up PostgreSQL and pgAdmin
 
 I learned how to retrieve and filter data from a database using SQL.
 
-## SELECT
+## What I Learned
 
-The `SELECT` statement is used to retrieve data from a table.
+### SELECT
+
+The `SELECT` statement retrieves data from a table.
 
 Example:
 
 ```sql
-SELECT * FROM employees;
-```
-
-This retrieves every column and every row from the `employees` table.
-
-To retrieve only specific columns:
-
-```sql
-SELECT first_name, last_name
+SELECT *
 FROM employees;
 ```
 
-## WHERE
+### WHERE
 
 The `WHERE` clause filters records based on a condition.
 
@@ -35,63 +29,94 @@ FROM employees
 WHERE department = 'Engineering';
 ```
 
-## Comparison Operators
+### Other SQL Concepts Covered
 
-I also learned how to filter data using comparison operators:
-
-- =
-- >
-- <
-- >=
-- <=
-- <>
-
-## Logical Operators
-
-SQL allows multiple conditions using:
-
+- Comparison Operators (`=`, `>`, `<`, `>=`, `<=`, `<>`)
 - AND
 - OR
 - NOT
+- BETWEEN
+- IN
+- LIKE
+- ILIKE
+- IS NULL
+- IS NOT NULL
+- DISTINCT
+- AS (Aliases)
 
-Example:
+---
+
+# 💻 Hands-on Practice
+
+### Retrieve all employees
+
+```sql
+SELECT *
+FROM employees;
+```
+
+**Output**
+
+Returns every employee record in the table.
+
+---
+
+### Retrieve only names
+
+```sql
+SELECT first_name, last_name
+FROM employees;
+```
+
+**Output**
+
+Returns only the employee names.
+
+---
+
+### Retrieve Engineering employees
 
 ```sql
 SELECT *
 FROM employees
-WHERE department = 'Engineering'
-AND salary > 50000;
+WHERE department = 'Engineering';
 ```
 
-## BETWEEN
+**Output**
 
-Used to find values within a range.
+Displays only employees working in the Engineering department.
+
+---
+
+### Find employees earning above ₦100,000
 
 ```sql
 SELECT *
 FROM employees
-WHERE salary BETWEEN 50000 AND 80000;
+WHERE salary > 100000;
 ```
 
-## IN
+**Output**
 
-Checks if a value exists in a list.
+Returns employees whose salary is greater than ₦100,000.
+
+---
+
+### Find employees aged between 25 and 35
 
 ```sql
 SELECT *
 FROM employees
-WHERE age IN (25,30,35);
+WHERE age BETWEEN 25 AND 35;
 ```
 
-## LIKE and ILIKE
+**Output**
 
-Used for pattern matching.
+Returns employees whose ages fall within the specified range.
 
-LIKE is case-sensitive in PostgreSQL.
+---
 
-ILIKE is case-insensitive.
-
-Example:
+### Search employees whose names start with "Ch"
 
 ```sql
 SELECT *
@@ -99,40 +124,71 @@ FROM employees
 WHERE first_name LIKE 'Ch%';
 ```
 
-## IS NULL
+**Output**
 
-Checks for empty values.
+Returns names beginning with "Ch".
+
+---
+
+## 🧩 Application Support Scenario
+
+Imagine a customer contacts the support team and says:
+
+> "I can't log into my account."
+
+One of the first things an Application Support Engineer might do is verify whether the user's record exists.
+
+Example:
 
 ```sql
 SELECT *
-FROM employees
-WHERE phone_number IS NULL;
+FROM users
+WHERE email = 'john@example.com';
 ```
 
-## DISTINCT
+If no record is returned, the issue may be that the account doesn't exist.
 
-Returns unique values.
+If the record exists, the investigation can continue by checking the account status, password reset history, or application logs.
+
+This helped me understand that SQL isn't just for developers—it's an essential troubleshooting tool for Application Support professionals.
+
+---
+
+## ⚠️ Challenges I Faced
+
+While learning today, I noticed that SQL syntax must be written carefully.
+
+For example, text values need to be enclosed in single quotes.
+
+❌ Incorrect
 
 ```sql
-SELECT DISTINCT department
-FROM employees;
+WHERE department = Engineering;
 ```
 
-## AS (Alias)
-
-Renames a column in the output.
+✅ Correct
 
 ```sql
-SELECT salary AS Monthly_Salary
-FROM employees;
+WHERE department = 'Engineering';
 ```
 
-## Key Takeaway
+Small syntax mistakes can prevent queries from running successfully.
 
-Today I realized SQL is like asking a database questions.
+---
 
-The better I understand SQL, the easier it will be to investigate issues, verify records, and troubleshoot applications as an Application Support Specialist.
+## 🎯 Key Takeaway
 
-## Next Step
+Today's lesson helped me see SQL as a language for asking questions about data.
 
-Learn ORDER BY, LIMIT, COUNT, and Aggregate Functions.
+The better I become at writing SQL queries, the better I'll be at investigating application issues and supporting users.
+
+---
+
+## ➡️ Next Steps
+
+Tomorrow I'll learn:
+
+- ORDER BY
+- LIMIT
+- COUNT()
+- Aggregate Functions
