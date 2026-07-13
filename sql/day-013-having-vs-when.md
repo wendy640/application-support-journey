@@ -1,4 +1,4 @@
-# 📅 Day 12 – HAVING and CASE in PostgreSQL
+# 📅 Day 13 – HAVING and CASE in PostgreSQL
 
 Today, I learned how to filter grouped results using the `HAVING` clause and categorize data using `CASE WHEN`.
 
